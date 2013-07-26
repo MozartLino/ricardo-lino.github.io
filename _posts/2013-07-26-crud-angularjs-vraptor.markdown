@@ -115,6 +115,17 @@ Perceba que no botão “Send user” do nosso user.html estamos passando qual f
 <script type="text/javascript" src="js/userController.js"></script>
 {% endhighlight %}
 
+{% highlight javascript %}
+ng-repeat="user in users"";
+{% endhighlight %}
+
+<p>
+Essa propriedade funciona como se fosse a tag c:forEach da biblioteca JSTL
+Aqui ele liga a lista de user ao elemento tr da tabela, ou seja, quando adicionamos um usuário ele cria um elemento tr, e quando removemos ele exclui o elemento tr vinculado àquele usuário da tabela.
+Ao adicionarmos um usuário, o angular automaticamente adicionará esse usuário à lista, isso sem precisar criar qualquer elemento html. Logo o trabalho de criação desses elementos fica por conta do dele.
+Podemos também criar as funções para editar o usuário.
+</p>
+
 
 {% highlight javascript %}
 //This function adds the user to the form
