@@ -115,11 +115,115 @@ Perceba que no botão “Send user” do nosso user.html estamos passando qual f
 <script type="text/javascript" src="js/userController.js"></script>
 {% endhighlight %}
 
+
+{% highlight javascript %}
+//This function adds the user to the form
+$scope.edit = function(user){
+    $scope.user = user;
+};
+ 
+//Essa será executada no click do botão edit ("putUser")
+$scope.putUser = function () {
+    //converting the user in json
+    var user = angular.toJson({user : $scope.user});
+    var url = '/angularJs/users/' + $scope.user.id;
+    $http.put(url, user).success(function(data){
+        //add the object in the list
+        $scope.users.unshift(data);
+        reset();
+    });
+};
+
+<p> E por fim a função de remover! </p>
+{% endhighlight %}
+
+{% highlight javascript %}
+$scope.deleteUser = function(user){
+    var confirm = $window.confirm('Remove user ' + user.login + '?');
+    if(confirm){	
+        var url = '/angularJs/users/' + user.id;
+	$http.delete(url).success(function(data){
+                //get position of the object in the collection
+		var index = $scope.users.indexOf(user);
+                //function to remove user
+		$scope.users.splice(index, 1);
+	});
+    }
+};
+{% endhighlight %}
+
 Essa propriedade funciona como se fosse a tag c:forEach da biblioteca JSTL
 Aqui ele liga a lista de user ao elemento tr da tabela, ou seja, quando adicionamos um usuário ele cria um elemento tr, e quando removemos ele exclui o elemento tr vinculado àquele usuário da tabela.
 Ao adicionarmos um usuário, o angular automaticamente adicionará esse usuário à lista, isso sem precisar criar qualquer elemento html. Logo o trabalho de criação desses elementos fica por conta do dele.
 Podemos também criar as funções para editar o usuário.
 
-{% highlight html %}
-ng-repeat="user in users";
+
+{% highlight javascript %}
 {% endhighlight %}
+
+
+
+
+{% highlight java %}
+import br.com.caelum.vraptor.Consumes;
+import br.com.caelum.vraptor.Delete;
+import br.com.caelum.vraptor.Get;
+import br.com.caelum.vraptor.Post;
+import br.com.caelum.vraptor.Put;
+import br.com.caelum.vraptor.Resource;
+import br.com.caelum.vraptor.Result;
+import br.com.caelum.vraptor.view.Results;
+import br.com.lino.model.User;
+import br.com.lino.repository.UserRepository;
+ 
+@Resource
+public class UserController {
+ 
+	private Result result;
+ 
+	private UserRepository users;
+ 
+	public UserController(Result result, UserRepository users) {
+		this.result = result;
+		this.users = users;
+	}
+ 
+	@Post("/users")
+	@Consumes("application/json")
+	public void save(User user) {
+		users.save(user);
+		result.use(Results.json()).withoutRoot().from(user).serialize();
+	}
+ 
+	@Put("/users/{user.id}")
+	@Consumes("application/json")
+	public void update(User user) {
+		users.update(user);
+		result.nothing();
+	}
+ 
+	@Delete("/users/{user.id}")
+	public void delete(User user) {
+		users.delete(user);
+		result.nothing();
+	}
+ 
+	@Get("/users")
+	public void list() {
+		result.use(Results.json())
+			.withoutRoot()
+			.from(users.list())
+			.serialize();
+	}
+ 
+}
+{% endhighlight %}
+
+<p>
+
+Note que precisamos anotar nosso método com o @Consumes e passar o formato do dado enviado! Sem isso o Vraptor não saberá deserializar o json passado.
+Você pode baixar o projeto que está no git e pode visualiza-lo através desse link: angularjs-with-vraptor
+Esse post é apenas uma introdução ao AngularJs, no próximo post irei mostrar outros conceitos por trás desse novo framework javascript
+Até a próxima.
+
+</p>
