@@ -114,7 +114,7 @@ Perceba que no botão “Send user” do nosso user.html estamos passando qual f
 <script type="text/javascript" src="js/angular.min.js"></script>
 <script type="text/javascript" src="js/userController.js"></script>
 {% endhighlight %}
-
+<br />
 {% highlight javascript %}
 ng-repeat="user in users"";
 {% endhighlight %}
