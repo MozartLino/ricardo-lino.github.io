@@ -8,6 +8,22 @@ categories: jekyll update
 Olá pessoal!
 Esse post tem o intuito de apenas introduzir o AngularJs com Vraptor e despertar o interesse nesses frameworks.
 
+<p>
+Hoje vou tentar mostrar como está cada vez mais fácil e rápida a maneira de criar boas aplicações web. Assim iremos fazer um CRUD utilizando dois frameworks: Vraptor(server-side) e AngularJs(cliente-side)
+</p>
+
+<p>
+Hoje vou tentar mostrar como está cada vez mais fácil e rápida a maneira de criar boas aplicações web. Assim iremos fazer um CRUD utilizando dois frameworks: Vraptor(server-side) e AngularJs(cliente-side)
+</p>
+
+<p>
+Muitos desenvolvedores não se sentem à vontade com o famigerado JSP e acabam optando pelo JSF, pois de certa forma alivia nossas preocupações na parte (cliente-side), já que seus componentes prontos deixam seus projetos bem mais produtivos.ddu tentar mostrar como está cada vez mais fácil e rápida a maneira de criar boas aplicações web. Assim iremos fazer um CRUD utilizando dois frameworks: Vraptor(server-side) e AngularJs(cliente-side)
+</p>
+
+<p>
+No entanto, se você quer criar um site com animações, efeitos, carregamento dinâmico de dados em tempo real etc., o JSF não é uma boa ideia já que a vantagem de se ter componentes prontos te traz alguns pontos negativos, como a perda do controle do seu HTML/CSS e javascript.
+</p>
+
 {% highlight html %}
 <html ng-app>
 <body ng-controller="userController">
