@@ -118,7 +118,7 @@ Perceba que no botão “Send user” do nosso user.html estamos passando qual f
 <br />
 A seguir, temos a propriedade ng-repeat:
 {% highlight javascript %}
-ng-repeat="user in users"";
+ng-repeat="user in users";
 {% endhighlight %}
 
 <p>
@@ -135,7 +135,6 @@ $scope.edit = function(user){
     $scope.user = user;
 };
  
-//Essa será executada no click do botão edit ("putUser")
 $scope.putUser = function () {
     //converting the user in json
     var user = angular.toJson({user : $scope.user});
@@ -236,7 +235,7 @@ public class UserController {
 <p>
 
 Note que precisamos anotar nosso método com o @Consumes e passar o formato do dado enviado! Sem isso o Vraptor não saberá deserializar o json passado.
-Você pode baixar o projeto que está no git e pode visualiza-lo através desse link: angularjs-with-vraptor
+Você pode baixar o projeto que está no git e pode visualiza-lo através desse link: <a href="https://github.com/ricardo-lino/AngularJsWithVaptor">angularjs-with-vraptor </a> 
 Esse post é apenas uma introdução ao AngularJs, no próximo post irei mostrar outros conceitos por trás desse novo framework javascript
 Até a próxima.
 
