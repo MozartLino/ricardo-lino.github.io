@@ -8,7 +8,7 @@ categories: javasript java
 Olá pessoal!
 Esse post tem o intuito de apenas introduzir o AngularJs com Vraptor e despertar o interesse nesses frameworks.
 
-Sendo assim, tentarei mostrar como está cada vez mais fácil e rápida a maneira de criar boas aplicações web. Assim iremos fazer um CRUD utilizando dois frameworks: Vraptor(server-side) e AngularJs(cliente-side)
+Logo, tentarei mostrar como está cada vez mais fácil e rápida a maneira de criar boas aplicações web. Assim iremos fazer um CRUD utilizando dois frameworks: Vraptor(server-side) e AngularJs(cliente-side)
 
 <p>
 Muitos desenvolvedores não se sentem à vontade com o famigerado JSP e acabam optando pelo JSF, pois de certa forma alivia nossas preocupações na parte (cliente-side), já que seus componentes prontos deixam seus projetos bem mais produtivos.
@@ -118,7 +118,7 @@ Perceba que no botão “Send user” do nosso user.html estamos passando qual f
 <br />
 A seguir, temos a propriedade ng-repeat:
 {% highlight javascript %}
-ng-repeat="user in users"";
+ng-repeat="user in users";
 {% endhighlight %}
 
 <p>
@@ -135,7 +135,6 @@ $scope.edit = function(user){
     $scope.user = user;
 };
  
-//Essa será executada no click do botão edit ("putUser")
 $scope.putUser = function () {
     //converting the user in json
     var user = angular.toJson({user : $scope.user});
@@ -166,16 +165,8 @@ $scope.deleteUser = function(user){
 };
 {% endhighlight %}
 
-
-{% highlight javascript %}
-ng-repeat="user in users";
-{% endhighlight %}
-
 <p>
-Essa propriedade funciona como se fosse a tag c:forEach da biblioteca JSTL
-Aqui ele liga a lista de user ao elemento tr da tabela, ou seja, quando adicionamos um usuário ele cria um elemento tr, e quando removemos ele exclui o elemento tr vinculado àquele usuário da tabela.
-Ao adicionarmos um usuário, o angular automaticamente adicionará esse usuário à lista, isso sem precisar criar qualquer elemento html. Logo o trabalho de criação desses elementos fica por conta do dele.
-Podemos também criar as funções para editar o usuário.
+Agora a parte fácil…. Controller do Vraptor!
 </p>
 
 {% highlight java %}
@@ -234,8 +225,9 @@ public class UserController {
 {% endhighlight %}
 
 <p>
-
 Note que precisamos anotar nosso método com o @Consumes e passar o formato do dado enviado! Sem isso o Vraptor não saberá deserializar o json passado.
+</p>
+<p>
 Você pode baixar o projeto que está no git e pode visualiza-lo através desse link: angularjs-with-vraptor
 </p>
 <p>
