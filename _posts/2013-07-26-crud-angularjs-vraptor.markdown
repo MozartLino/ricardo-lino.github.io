@@ -2,21 +2,22 @@
 layout: post
 title:  "CRUD AngularJs com Vraptor"
 date:   2013-07-26 14:52:28
-categories: jekyll update
+categories: javasript java
 ---
 <p>
 Olá pessoal!
 Esse post tem o intuito de apenas introduzir o AngularJs com Vraptor e despertar o interesse nesses frameworks.
 
-Hoje vou tentar mostrar como está cada vez mais fácil e rápida a maneira de criar boas aplicações web. Assim iremos fazer um CRUD utilizando dois frameworks: Vraptor(server-side) e AngularJs(cliente-side)
+Sendo assim, tentarei mostrar como está cada vez mais fácil e rápida a maneira de criar boas aplicações web. Assim iremos fazer um CRUD utilizando dois frameworks: Vraptor(server-side) e AngularJs(cliente-side)
 
 <p>
-Muitos desenvolvedores não se sentem à vontade com o famigerado JSP e acabam optando pelo JSF, pois de certa forma alivia nossas preocupações na parte (cliente-side), já que seus componentes prontos deixam seus projetos bem mais produtivos.ddu tentar mostrar como está cada vez mais fácil e rápida a maneira de criar boas aplicações web. Assim iremos fazer um CRUD utilizando dois frameworks: Vraptor(server-side) e AngularJs(cliente-side)
+Muitos desenvolvedores não se sentem à vontade com o famigerado JSP e acabam optando pelo JSF, pois de certa forma alivia nossas preocupações na parte (cliente-side), já que seus componentes prontos deixam seus projetos bem mais produtivos.
 
 <p>
-No entanto, se você quer criar um site com animações, efeitos, carregamento dinâmico de dados em tempo real etc., o JSF não é uma boa ideia já que a vantagem de se ter componentes prontos te traz alguns pontos negativos, como a perda do controle do seu HTML/CSS e javascript.
+No entanto, se você quer criar um site com animações, efeitos, carregamento dinâmico de dados em tempo real etc., o JSF não é uma boa ideia já que a vantagem de se ter componentes prontos te traz algumas desvantegens, como a perda do controle do seu HTML/CSS e javascript.
+</p>
 
-
+<p>
 Mesmo com bibliotecas como Jquery, manipular o DOM ainda é trabalhoso. Desenvolvedores, ao perceberem a baixa produtividade de se criar elementos dinamicamente, resolveram criar frameworks para aliviar esse trabalho árduo. Um deles é o AngularJs, que usa o conceito de data-binding, no qual o DOM está ligado diretamente ao modelo.
 
 Sem mais delongas, vou mostrar o primeiro passo para a criação do nosso projeto.
@@ -42,10 +43,10 @@ Sem mais delongas, vou mostrar o primeiro passo para a criação do nosso projet
 <script type="text/javascript" src="js/angular.min.js"></script>
 <script type="text/javascript" src="js/userController.js"></script>
 </html>
-{% endhighlight %}
+{% endhighlight %}<i>user.html</i>
 
 <p>
-Esse html, não é um html comum, já que na tag html estamos informando através da propriedade ng-app que o AngularJs vai controlá-lo daquele ponto em diante, ou seja, a partir daquele ponto o meu html vira um aplicativo Angular.
+Esse html, não é um html comum, já que na tag html estamos informando através da propriedade ng-app que o AngularJs vai controlá-lo daquele ponto em diante, ou seja, a partir daquele ponto o meu html vira uma aplicação Angular.
 A próxima tag ng-controller vai informar ao Angular qual function ele vai usar para aquele escopo, no caso do exemplo, é a function “userController”, Agora perceba que no nosso formulário há campos para o cadastro de usuário e com a tag ng-model estamos ligando os campos ao nosso modelo, assim na function userController podemos manipular esse “model”, ou seja, as alterações feitas na function “userController” reflete nos inputs e vice-versa.
 Assim, para manipularmos esse objeto dentro do js, basta acessá-lo através do atributo $scope e manipulá-lo de qualquer forma, um exemplo: salvar esse objeto no banco.
 </p>
@@ -66,7 +67,7 @@ var reset = function(){
 
 
 <p>
-Perceba que no botão “Send user” do nosso user.html estamos passando qual função ele executará ao ser clicado(que é function “postUser()”). Nela podemos enviar o objeto para o servidor no formato json. E depois jogar para um lista de users, e no final limpar o form com a função reset(). Agora devemos ligar a lista de users ao nosso html. Então vamos acrescentar uma tabela com os usuários já cadastrados no nosso user.html!
+Perceba que no botão “Send user” do nosso user.html estamos passando qual função ele executará ao ser clicado(que é function “postUser()”). Nela podemos enviar o objeto para o servidor no formato json. E depois jogar para uma lista de users, e no final limpar o form com a função reset(). Agora devemos ligar a lista de users ao nosso html. Então vamos acrescentar uma tabela com os usuários já cadastrados no nosso user.html!
 </p>
 
 {% highlight html %}
@@ -115,6 +116,7 @@ Perceba que no botão “Send user” do nosso user.html estamos passando qual f
 <script type="text/javascript" src="js/userController.js"></script>
 {% endhighlight %}
 <br />
+A seguir, temos a propriedade ng-repeat:
 {% highlight javascript %}
 ng-repeat="user in users"";
 {% endhighlight %}
